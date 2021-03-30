@@ -2,6 +2,16 @@
     display:none;
 };
 
-.allDone {
+
+.finished {
     display:none;
+};
+
+.answer{
+    color: white;
+    background-color: rgb(65, 4, 65);
+};
+
+.answer:hover{
+opacity: 70%;
 };
