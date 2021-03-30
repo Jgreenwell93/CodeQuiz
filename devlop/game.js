@@ -1,4 +1,5 @@
 var timer=document.querySelector('.timer-count');
+// list of questions, answers, and right answers
 var questions=[{
     Q:"What is 6x7",
     ans:[13,27,35,42],
@@ -13,10 +14,19 @@ var questions=[{
     RightA:"78"
 },{
     Q:"What is 30 / 3",
-    and:[10,15,60,90]
+    and:[10,15,60,90],
     RightA:"10"
 }
 ];
+
+// main quiz function
+function quiz(event){
+    event.preventDefault();
+    // removes starting page elements on start
+    document.querySelector(".startingPage").style.display='none';
+    timerStart();
+
+}
 
 // timer function
 // works but doesnt display.
@@ -34,4 +44,4 @@ function timerStart(){
 
 
 // timer begins when start button clicked
-document.querySelector(".start-button").addEventListener("click", timerStart);
+document.querySelector(".start-button").addEventListener("click", quiz);

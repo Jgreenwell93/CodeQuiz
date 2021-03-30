@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/reset.css">
-    <link href="assets/normalize.css">
-    <link href="devlop/style.css">
+    <link rel="reset" href="assets/reset.css">
+    <link rel="normalize" href="assets/normalize.css">
+    <link rel="stylesheet" href="devlop/style.css">
     <title>CodeQuiz</title>
 </head>
 <body>
@@ -14,10 +14,33 @@
 
     <p class="timer-count"></p>
 
+    <!-- staring page elements -->
+<div class=startingPage>
     <h1 class="starting-page">Simple Math Quiz</h1>
     <p class ="starting-page">Try to answer the following questions within the time limit. Incorrect answers will peanlize your time.</p>
 
     <button type="button" class="start-button" class="starting-page">Start Quiz</button>
+</div>
+<!-- quiz page elements -->
+<div class="quizPage">
+    <h1 class="question"></h1>
+    <ol class ="answers">
+        <li class="answer1"></li>
+        <li class="answer2"></li>
+        <li class="answer3"></li>
+        <li class="answer4"></li>
+    </ol>
+</div>
+<!-- elements after game ends -->
+<div class="allDone">
+    <h1>All Done!</h1>
+    <p class=finalScore></p>
+    <form action="">
+        <label for="initials">Enter your initials</label>
+        <input type="text" class='initials' name="initials">
+        <input type="submit" value="Submit">
+    </form>
+</div>
     
     <script src="devlop/game.js"></script>
 </body>
