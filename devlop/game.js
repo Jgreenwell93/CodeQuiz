@@ -1,4 +1,4 @@
-var timer=document.querySelector('.timer-count');
+var timeDisplay=document.querySelector('.timer-count');
 var sec = 20;
 var answers = document.querySelectorAll('.answer')
 // list of questions, answers, and right answers
@@ -29,26 +29,28 @@ var answer=document.querySelector(".answer");
 
 // main quiz function
 function quiz(event){
+    timerStart();
     // removes starting page elements on start
     document.querySelector(".startingPage").style.display='none';
     document.querySelector(".quizPage").style.display='contents';
-    timerStart();
 
-    if(i=0,i<4){
+
+    if(i=0,i<questions.length){
         // renders questions and answers
     question.textContent=questions[i]["Q"];
     answer1.textContent=questions[i]["ans"][0];
     answer2.textContent=questions[i]["ans"][1];
     answer3.textContent=questions[i]["ans"][2];
     answer4.textContent=questions[i]["ans"][3];
-
+// checks clicked answer for correctness
     answers.forEach(function(answer) {
         answer.addEventListener('click', function(event) {
           if(questions[i].RightA == event.target.textContent){
-            console.log('Correct!')
+            console.log('Correct!');
             i++;
+            
           } else {
-            console.log('Wrong')
+            console.log('Wrong');
             i++;
           };
         });
@@ -63,10 +65,9 @@ function quiz(event){
 
 
 // timer function
-// works but doesnt display.
 function timerStart(){
     var timer = setInterval(function(){
-        timer.textContent='00:'+sec;
+        timeDisplay.textContent='00:'+sec;
         console.log(sec);
         sec--;
         if (sec < 0) {
@@ -78,6 +79,7 @@ function timerStart(){
 
 // performs the end of quiz events
 function gameOver(){
+    document.querySelector(".quizPage").style.display='none';
     document.querySelector(".finished").style.display='contents';
 };
 
