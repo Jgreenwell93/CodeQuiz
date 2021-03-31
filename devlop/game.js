@@ -1,8 +1,8 @@
 var timeDisplay=document.querySelector('.timer-count');
 var sec = 20;
 var answers = document.querySelectorAll('.answer');
+var result=document.querySelector(".yesNo");
 var initials=document.querySelector(".initials");
-var submit=document.querySelector(".submit");
 var finalScore=document.querySelector(".finalScore");
 var gameComplete=false;
 // list of questions, answers, and right answers
@@ -48,6 +48,7 @@ function quiz(event){
             console.log('Correct!');
             i++;
             console.log(i);
+            result.textContent="Correct!"
             updateText(i);
             
           } else {
@@ -55,6 +56,7 @@ function quiz(event){
             sec-=3;
             i++;
             console.log(i);
+            result.textContent="Wrong!"
             updateText(i);
           };
         });
@@ -62,7 +64,7 @@ function quiz(event){
 
 
 };
-
+// when the quiz startsor a question answered, updates the elemtns holding questions and asnwers
 function updateText(i){
     if(i<questions.length){
         // renders questions and answers
@@ -103,6 +105,12 @@ function gameOver(){
 
 };
 
+function recordScore(){
+    var initialRecord=JSON.stringify(initials.value);
+localStorage.setItem(initialRecord, sec);
+};
+
 
 // timer begins when start button clicked
 document.querySelector(".start-button").addEventListener("click", quiz);
+document.querySelector(".submit-button").addEventListener("click",recordScore);
