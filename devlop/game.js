@@ -79,6 +79,7 @@ function updateText(i){
 
 // timer function
 function timerStart(){
+    timeDisplay.textContent='00:'+sec;
     var timer = setInterval(function(){
         timeDisplay.textContent='00:'+sec;
         // console.log(sec);
