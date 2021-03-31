@@ -1,11 +1,7 @@
-.quizPage {
+.hidden {
     display:none;
 };
 
-
-.finished {
-    display:none;
-};
 
 .answer{
     color: white;
