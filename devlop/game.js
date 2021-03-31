@@ -81,9 +81,9 @@ function updateText(i){
 
 // timer function
 function timerStart(){
-    timeDisplay.textContent='00:'+sec;
+    timeDisplay.textContent='Time:'+sec;
     var timer = setInterval(function(){
-        timeDisplay.textContent='00:'+sec;
+        timeDisplay.textContent='Time:'+sec;
         // console.log(sec);
         if(!gameComplete){
             sec--;
