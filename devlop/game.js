@@ -1,6 +1,9 @@
 var timeDisplay=document.querySelector('.timer-count');
 var sec = 20;
-var answers = document.querySelectorAll('.answer')
+var answers = document.querySelectorAll('.answer');
+var initials=document.querySelector(".initials");
+var submit=document.querySelector(".submit");
+var finalScore=document.querySelector(".finalScore");
 // list of questions, answers, and right answers
 var questions=[{
     Q:"What is 6x7",
@@ -56,6 +59,7 @@ function quiz(event){
             
           } else {
             console.log('Wrong');
+            sec=sec-3;
             i++;
           };
         });
@@ -82,6 +86,8 @@ function timerStart(){
 function gameOver(){
     document.querySelector(".quizPage").style.display='none';
     document.querySelector(".finished").style.display='contents';
+    finalScore.textContent="Your Score is "+sec;
+
 };
 
 
