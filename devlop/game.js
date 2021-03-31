@@ -4,6 +4,7 @@ var answers = document.querySelectorAll('.answer');
 var initials=document.querySelector(".initials");
 var submit=document.querySelector(".submit");
 var finalScore=document.querySelector(".finalScore");
+var gameComplete=false;
 // list of questions, answers, and right answers
 var questions=[{
     Q:"What is 6x7",
@@ -19,7 +20,7 @@ var questions=[{
     RightA:"78"
 },{
     Q:"What is 30 / 3",
-    and:[10,15,60,90],
+    ans:[10,15,60,90],
     RightA:"10"
 }
 ];
@@ -37,8 +38,33 @@ function quiz(event){
     document.querySelector(".startingPage").style.display='none';
     document.querySelector(".quizPage").style.display='contents';
 
+  var i=0;
+  updateText(i);
 
-    if(i=0,i<questions.length){
+    // checks clicked answer for correctness
+    answers.forEach(function(answer) {
+        answer.addEventListener('click', function(event) {
+          if(questions[i].RightA == event.target.textContent){
+            console.log('Correct!');
+            i++;
+            console.log(i);
+            updateText(i);
+            
+          } else {
+            console.log('Wrong');
+            sec-=3;
+            i++;
+            console.log(i);
+            updateText(i);
+          };
+        });
+      });
+
+
+};
+
+function updateText(i){
+    if(i<questions.length){
         // renders questions and answers
     question.textContent=questions[i]["Q"];
     answer1.textContent=questions[i]["ans"][0];
@@ -49,32 +75,17 @@ function quiz(event){
     }else{
         gameOver();
     };
-
-    // checks clicked answer for correctness
-    answers.forEach(function(answer) {
-        answer.addEventListener('click', function(event) {
-          if(questions[i].RightA == event.target.textContent){
-            console.log('Correct!');
-            i++;
-            
-          } else {
-            console.log('Wrong');
-            sec=sec-3;
-            i++;
-          };
-        });
-      });
-
-
 };
-
 
 // timer function
 function timerStart(){
     var timer = setInterval(function(){
         timeDisplay.textContent='00:'+sec;
-        console.log(sec);
-        sec--;
+        // console.log(sec);
+        if(!gameComplete){
+            sec--;
+        }
+   
         if (sec < 0) {
             clearInterval(timer);
             gameOver();
@@ -87,6 +98,7 @@ function gameOver(){
     document.querySelector(".quizPage").style.display='none';
     document.querySelector(".finished").style.display='contents';
     finalScore.textContent="Your Score is "+sec;
+    gameComplete=true;
 
 };
 
