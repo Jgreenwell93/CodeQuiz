@@ -1,9 +1,11 @@
 var timer=document.querySelector('.timer-count');
+var sec = 20;
+var answers = document.querySelectorAll('.answer')
 // list of questions, answers, and right answers
 var questions=[{
     Q:"What is 6x7",
     ans:[13,27,35,42],
-    RightA:"43"
+    RightA:"42"
 },{
     Q:"What is 22+34",
     ans:[34,45,56,69],
@@ -27,44 +29,45 @@ var answer=document.querySelector(".answer");
 
 // main quiz function
 function quiz(event){
-    // event.preventDefault();
     // removes starting page elements on start
     document.querySelector(".startingPage").style.display='none';
     document.querySelector(".quizPage").style.display='contents';
     timerStart();
 
     if(i=0,i<4){
+        // renders questions and answers
     question.textContent=questions[i]["Q"];
     answer1.textContent=questions[i]["ans"][0];
     answer2.textContent=questions[i]["ans"][1];
     answer3.textContent=questions[i]["ans"][2];
     answer4.textContent=questions[i]["ans"][3];
-    answer1.setAttribute('data-value', questions[i]['ans'][0]);
-    answer2.setAttribute('data-value', questions[i]['ans'][1]);
-    answer3.setAttribute('data-value', questions[i]['ans'][2]);
-    answer4.setAttribute('data-value', questions[i]['ans'][3]);
-    answer.addEventListener("click", function(event){
-        event.preventDefault();
-        console.log(event.currentTarget.textContent);
-        
 
-    });
-    // if item click ==questions[i][RightA]then say right and i++
-    // else if item click !==questions[i][RightA]then say wrong, sec-3, i++
+    answers.forEach(function(answer) {
+        answer.addEventListener('click', function(event) {
+          if(questions[i].RightA == event.target.textContent){
+            console.log('Correct!')
+            i++;
+          } else {
+            console.log('Wrong')
+            i++;
+          };
+        });
+      });
+
     }else{
         gameOver();
-    }
+    };
 
 
-}
+};
+
 
 // timer function
 // works but doesnt display.
 function timerStart(){
-    var sec = 20;
     var timer = setInterval(function(){
         timer.textContent='00:'+sec;
-        // console.log(sec);
+        console.log(sec);
         sec--;
         if (sec < 0) {
             clearInterval(timer);
