@@ -42,7 +42,12 @@ function quiz(event){
     answer2.textContent=questions[i]["ans"][1];
     answer3.textContent=questions[i]["ans"][2];
     answer4.textContent=questions[i]["ans"][3];
-// checks clicked answer for correctness
+
+    }else{
+        gameOver();
+    };
+
+    // checks clicked answer for correctness
     answers.forEach(function(answer) {
         answer.addEventListener('click', function(event) {
           if(questions[i].RightA == event.target.textContent){
@@ -55,10 +60,6 @@ function quiz(event){
           };
         });
       });
-
-    }else{
-        gameOver();
-    };
 
 
 };
