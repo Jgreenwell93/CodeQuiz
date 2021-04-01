@@ -107,7 +107,7 @@ function gameOver(){
 
 function recordScore(){
     var initialRecord=JSON.stringify(initials.value);
-localStorage.setItem(initialRecord, sec);
+localStorage.setItem(initialRecord , sec);
 };
 
 

@@ -1,3 +1,43 @@
+:root{
+    --blue:darkblue;
+    --lightblue:rgb(14, 185, 185);
+}
+
+*{
+    font-size: xx-large;
+}
+
+.center{
+    border: solid;
+    border-radius: 2px;
+    border-color: var(--lightblue);
+}
+
+
+.title{
+    color: var(--blue);
+}
+
+
+.answer:hover{
+    color: chartreuse;
+    cursor: pointer;
+}
+
+.question{
+    color: var(--blue);
+}
+
+
+.highscores{
+    color: var(--blue);
+}
+
+.button{
+    background-color: var(--lightblue);
+}
+
 .hidden {
     display:none;
-};
+}
+
